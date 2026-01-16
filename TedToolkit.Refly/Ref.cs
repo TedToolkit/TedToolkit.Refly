@@ -5,6 +5,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
 namespace TedToolkit.Refly;
 
 /// <summary>
@@ -21,5 +23,8 @@ public sealed class Ref<TStruct>(scoped in TStruct value)
     /// Gets Value.
     /// </summary>
     public ref TStruct Value
-        => ref _value;
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref _value;
+    }
 }
