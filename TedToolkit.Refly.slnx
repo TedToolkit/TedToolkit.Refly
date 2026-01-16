@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".github/workflows/build.yml" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="Build/Build.csproj" />
+  <Project Path="TedToolkit.Refly.Benchmark/TedToolkit.Refly.Benchmark.csproj" />
+  <Project Path="TedToolkit.Refly/TedToolkit.Refly.csproj" />
+</Solution>
