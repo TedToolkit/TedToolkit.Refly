@@ -5,6 +5,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
 namespace TedToolkit.Refly;
 
 /// <summary>
@@ -21,9 +23,13 @@ public sealed class DisposableRef<TStruct>(scoped in TStruct value) : IDisposabl
     /// Gets Value.
     /// </summary>
     public ref TStruct Value
-        => ref _value;
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => ref _value;
+    }
 
     /// <inheritdoc />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Dispose()
         => _value.Dispose();
 }
