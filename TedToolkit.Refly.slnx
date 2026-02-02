@@ -5,7 +5,9 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Project Path="Build/Build.csproj" />
+  <Project Path="Build/Build.csproj">
+    <Build Project="false" />
+  </Project>
   <Project Path="TedToolkit.Refly.Benchmark/TedToolkit.Refly.Benchmark.csproj" />
   <Project Path="TedToolkit.Refly/TedToolkit.Refly.csproj" />
 </Solution>
