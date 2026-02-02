@@ -27,4 +27,9 @@ public sealed class Ref<TStruct>(scoped in TStruct value)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => ref _value;
     }
+
+    /// <inheritdoc />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override string? ToString()
+        => _value.ToString();
 }

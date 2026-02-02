@@ -32,4 +32,9 @@ public sealed class DisposableRef<TStruct>(scoped in TStruct value) : IDisposabl
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Dispose()
         => _value.Dispose();
+
+    /// <inheritdoc />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override string? ToString()
+        => _value.ToString();
 }
