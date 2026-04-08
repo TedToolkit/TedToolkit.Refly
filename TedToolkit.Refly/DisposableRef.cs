@@ -10,31 +10,39 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Refly;
 
 /// <summary>
-/// Disposable ref struct.
+/// A heap-allocated wrapper that holds a mutable reference to a disposable struct value.
+/// Disposing this wrapper disposes the wrapped struct.
 /// </summary>
-/// <typeparam name="TStruct">struct.</typeparam>
-/// <param name="value">value.</param>
+/// <typeparam name="TStruct">The type of the disposable struct to wrap.</typeparam>
+/// <param name="value">The disposable struct value to wrap.</param>
 public sealed class DisposableRef<TStruct>(scoped in TStruct value) : IDisposable
     where TStruct : struct, IDisposable
 {
     private TStruct _value = value;
 
     /// <summary>
-    /// Gets Value.
+    /// Gets a mutable reference to the wrapped struct value.
     /// </summary>
     public ref TStruct Value
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => ref _value;
+        get
+        {
+            return ref _value;
+        }
     }
 
     /// <inheritdoc />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Dispose()
-        => _value.Dispose();
+    {
+        _value.Dispose();
+    }
 
     /// <inheritdoc />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override string? ToString()
-        => _value.ToString();
+    {
+        return _value.ToString();
+    }
 }

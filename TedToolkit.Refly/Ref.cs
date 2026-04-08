@@ -10,26 +10,31 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Refly;
 
 /// <summary>
-/// Ref struct.
+/// A heap-allocated wrapper that holds a mutable reference to a struct value.
 /// </summary>
-/// <typeparam name="TStruct">struct.</typeparam>
-/// <param name="value">value.</param>
+/// <typeparam name="TStruct">The type of the struct to wrap.</typeparam>
+/// <param name="value">The struct value to wrap.</param>
 public sealed class Ref<TStruct>(scoped in TStruct value)
     where TStruct : struct
 {
     private TStruct _value = value;
 
     /// <summary>
-    /// Gets Value.
+    /// Gets a mutable reference to the wrapped struct value.
     /// </summary>
     public ref TStruct Value
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => ref _value;
+        get
+        {
+            return ref _value;
+        }
     }
 
     /// <inheritdoc />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public override string? ToString()
-        => _value.ToString();
+    {
+        return _value.ToString();
+    }
 }
