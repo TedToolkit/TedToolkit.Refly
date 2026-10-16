@@ -2,4 +2,7 @@
   <Import Project="..\externals\TedToolkit\props\CodeAnalysis.props"/>
   <Import Project="..\externals\TedToolkit\props\NugetPackage.props"/>
   <Import Project="..\externals\TedToolkit\props\AlmostAllFrameworks.props"/>
+  <PropertyGroup>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
+  </PropertyGroup>
 </Project>
