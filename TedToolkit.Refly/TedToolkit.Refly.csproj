@@ -5,4 +5,9 @@
   <PropertyGroup>
     <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../.agents/skills/share-mutable-struct-state/**/*"
+          Pack="true" PackagePath="skills/share-mutable-struct-state/" />
+  </ItemGroup>
 </Project>
